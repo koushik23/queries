@@ -36,12 +36,9 @@ class Student:
             cls.b=y
             if str(x) not in ('name','age','score','student_id'):
                 raise InvalidField 
+           
+        query="select * from student where {} = '{}'".format(cls.a,cls.b)
         
-	if cls.a=='name':   
-            query="select * from student where {} = '{}'".format(cls.a,cls.b)
-        else:
-            query="select * from student where {} = {}".format(cls.a,cls.b)
-       
         obj=read_data(query)
         if len(obj)>1:
             raise MultipleObjectsReturned
